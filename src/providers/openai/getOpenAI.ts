@@ -1,22 +1,27 @@
-import { OpenAI } from 'openai'
+import { OpenAI } from 'openai';
+
+// Export the persisted object
+export const persisted = {
+  apiKey: '',
+  model: '',
+};
 
 export const getOpenAI = async (apiKey?: string): Promise<OpenAI> => {
-  const apiKeyFromEnv = process.env.OPENAI_API_KEY;
-  const finalApiKey = apiKey || apiKeyFromEnv;
+  // Use the provided apiKey or fallback to the persisted one, or from the environment variable
+  persisted.apiKey = apiKey || persisted.apiKey || process.env.OPENAI_API_KEY;
 
-  if (!finalApiKey) {
-    throw new Error('Missing API key, we can\'t call OpenAI');
+  if (!persisted.apiKey) {
+    throw new Error(`Missing API key, we can't call OpenAI`);
   }
 
   const openai = new OpenAI({
-    apiKey: finalApiKey,
-    baseURL: "https://api.openai.com/v1",
+    apiKey: persisted.apiKey,
+    baseURL: 'https://api.openai.com/v1',
     dangerouslyAllowBrowser: true,
   });
 
   return openai;
-}
-
+};
 
 
 // import { OpenAI } from 'openai'
