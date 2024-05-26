@@ -1,0 +1,43 @@
+{
+  "productName": "The Latent Browser",
+  "version": "0.1.0",
+  "identifier": "com.datagica.web4",
+  "build": {
+    "beforeDevCommand": "bun run dev",
+    "devUrl": "http://localhost:3000",
+    "beforeBuildCommand": "bun run build",
+    "frontendDist": "../.next/server/app"
+  },
+  "app": {
+    "macOSPrivateApi": true,
+    "windows": [
+      {
+        "title": "The Latent Browser 🔮",
+        "decorations": false,
+        "transparent": true,
+        "fullscreen": false,
+        "resizable": true,
+        "width": 800,
+        "height": 600
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "category": "DeveloperTool",
+    "copyright": "Julian `flngr` Bilcke.",
+    "shortDescription": "Browse the latent web.",
+    "longDescription": "Browse the latent web. A project by @flngr, see https://linktr.ee/FLNGR for other projects."
+  }
+}
