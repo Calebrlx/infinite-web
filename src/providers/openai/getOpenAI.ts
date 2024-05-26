@@ -7,8 +7,7 @@ export const persisted = {
 };
 
 export const getOpenAI = async (apiKey?: string): Promise<OpenAI> => {
-  // Use the provided apiKey or fallback to the persisted one, or from the environment variable
-  persisted.apiKey = apiKey || persisted.apiKey || process.env.OPENAI_API_KEY;
+  persisted.apiKey = apiKey || persisted.apiKey;
 
   if (!persisted.apiKey) {
     throw new Error(`Missing API key, we can't call OpenAI`);
@@ -22,7 +21,6 @@ export const getOpenAI = async (apiKey?: string): Promise<OpenAI> => {
 
   return openai;
 };
-
 
 // import { OpenAI } from 'openai'
 
